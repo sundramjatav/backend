@@ -31,12 +31,13 @@ const CreateInventory = async (req, res) => {
 
 const FindInventory = async (req, res) => {
   try {
-    const allInventory = await Inventory.find({ userId: req.user._id });
-    res.status(200).json({ message: "Find Inventory", allInventory });
-   
+    const userId = req.user._id; // Use req.user._id for consistency and security
+    console.log(userId, "id");
+    const userInventory = await Inventory.find({ userId });
+    res.status(200).json({ message: "Find Inventory", userInventory });
   } catch (error) {
     console.error("Error fetching inventory:", error);
-    res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ message: "Internal server error" });
   }
 };
 
