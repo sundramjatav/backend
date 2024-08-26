@@ -17,7 +17,7 @@ connectDB();
 // app.set('view engine', 'ejs');
 
 app.use(cors({
-  origin: [process.env.FRONT_END_URL],
+  origin: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 }));
